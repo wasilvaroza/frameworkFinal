@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  organizador: MyString
+  local: MyString
+  dataHora_inicio: MyString
+  dataHora_fim: MyString
+  assunto: MyString
+
+two:
+  titulo: MyString
+  organizador: MyString
+  local: MyString
+  dataHora_inicio: MyString
+  dataHora_fim: MyString
+  assunto: MyString

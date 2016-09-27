@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Evento:</strong>
+  <%= @atividade.evento %>
+</p>
+
+<p>
+  <strong>Tituloatividade:</strong>
+  <%= @atividade.tituloAtividade %>
+</p>
+
+<p>
+  <strong>Assunto:</strong>
+  <%= @atividade.assunto %>
+</p>
+
+<p>
+  <strong>Resumo:</strong>
+  <%= @atividade.resumo %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @atividade.tipo %>
+</p>
+
+<p>
+  <strong>Datahora inicio:</strong>
+  <%= @atividade.dataHora_inicio %>
+</p>
+
+<p>
+  <strong>Datahora fim:</strong>
+  <%= @atividade.dataHora_fim %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @atividade.local %>
+</p>
+
+<%= link_to 'Editar', edit_atividade_path(@atividade) %> |
+<%= link_to 'Voltar', atividades_path %>

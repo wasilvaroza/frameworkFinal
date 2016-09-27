@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Atividades Cadastradas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Tituloatividade</th>
+      <th>Assunto</th>
+      <th>Resumo</th>
+      <th>Tipo</th>
+      <th>Datahora inicio</th>
+      <th>Datahora fim</th>
+      <th>Local</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @atividades.each do |atividade| %>
+      <tr>
+        <td><%= atividade.evento.titulo if atividade.evento %></td>
+        <td><%= atividade.tituloAtividade %></td>
+        <td><%= atividade.assunto %></td>
+        <td><%= atividade.resumo %></td>
+        <td><%= atividade.tipo %></td>
+        <td><%= atividade.dataHora_inicio %></td>
+        <td><%= atividade.dataHora_fim %></td>
+        <td><%= atividade.local %></td>
+        <td> <%= link_to ' ', edit_atividade_path(atividade), class: "glyphicon glyphicon-pencil" %>
+<%= link_to ' ', atividade, method: :delete, data: { confirm: 'Tem certeza de que deseja excluir?' } , class: "glyphicon glyphicon-trash" %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Atividade', new_atividade_path %>

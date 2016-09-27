@@ -1,0 +1,54 @@
+<%= form_for(@participante) do |f| %>
+  <% if @participante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@participante.errors.count, "error") %> prohibited this participante from being saved:</h2>
+
+      <ul>
+      <% @participante.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :RG %><br>
+    <%= f.text_field :rg %>
+  </div>
+  <div class="field">
+    <%= f.label :"Data de Nascimento" %><br>
+    <%= f.text_field :dataNasc , class: 'datepicker' %>
+  </div>
+  <div class="field">
+    <%= f.label :Email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :Formacao %><br>
+    <%= f.text_field :formacao %>
+  </div>
+  <div class="field">
+    <%= f.label :Atividade %><br>
+    <%= f.select :atividade_id, options_for_select(Atividade.all.map{|m|[m.tituloAtividade,m.id]},f.object.atividade_id) %>
+  </div>
+  <div>
+    <%= f.label :Foto %>
+    <%= image_tag @participante.foto_url, class: 'foto' if @participante.foto? %>
+    <%= f.file_field :foto, label: 'Foto' , input_html: {accept: ('application/jpg') } %>
+   <br/>
+  </div>
+  <div class="actions">
+  <%= f.submit 'Salvar', :class => 'btn btn-primary' %>
+  <%= link_to ' Voltar', participantes_path , class: "btn btn-default " %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	$('#rg').inputmask("99.999.999-9");
+	});
+</script>

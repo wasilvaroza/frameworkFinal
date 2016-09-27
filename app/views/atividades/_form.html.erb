@@ -1,0 +1,56 @@
+<%= form_for(@atividade) do |f| %>
+  <% if @atividade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@atividade.errors.count, "error") %> prohibited this atividade from being saved:</h2>
+
+      <ul>
+      <% @atividade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :evento_id %><br>
+    <%= f.select :evento_id, options_for_select(Evento.all.map{|m|[m.titulo,m.id]},f.object.evento_id) %>
+</div>
+  <div class="field">
+    <%= f.label :tituloAtividade %><br>
+    <%= f.text_field :tituloAtividade %>
+  </div>
+  <div class="field">
+    <%= f.label :assunto %><br>
+    <%= f.text_field :assunto %>
+  </div>
+  <div class="field">
+    <%= f.label :resumo %><br>
+    <%= f.text_field :resumo %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br>
+    <%= f.text_field :tipo %>
+  </div>
+  <div class="field">
+    <%= f.label :"Data Inicial" %><br>
+    <%= f.text_field :dataHora_inicio , class: 'datepicker' %>
+  </div>
+  <div class="field">
+    <%= f.label :"Data Final" %><br>
+    <%= f.text_field :dataHora_fim , class: 'datepicker' %>
+  </div>
+  <div class="field">
+    <%= f.label :local %><br>
+    <%= f.text_field :local %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Salvar', :class => 'btn btn-primary' %>
+    <%= link_to ' Voltar', atividades_path , class: "btn btn-default " %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	$('.datepicker').datepicker({format: 'dd-mm-yyyy'});
+	});
+</script>

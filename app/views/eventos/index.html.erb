@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Eventos Agendados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Organizador</th>
+      <th>Local</th>
+      <th>Datahora inicio</th>
+      <th>Datahora fim</th>
+      <th>Assunto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eventos.each do |evento| %>
+      <tr>
+        <td><%= evento.titulo %></td>
+        <td><%= evento.organizador %></td>
+        <td><%= evento.local %></td>
+        <td><%= evento.dataHora_inicio %></td>
+        <td><%= evento.dataHora_fim %></td>
+        <td><%= evento.assunto %></td>
+        <td><%= link_to ' ', edit_evento_path(evento), class: "glyphicon glyphicon-pencil" %>
+	<%= link_to ' ', evento, method: :delete, data: { confirm: 'Tem certeza de que deseja excluir?' } , class: "glyphicon glyphicon-trash" %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Evento', new_evento_path %>
