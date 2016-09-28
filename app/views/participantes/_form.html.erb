@@ -22,6 +22,7 @@
   <div class="field">
     <%= f.label :"Data de Nascimento" %><br>
     <%= f.text_field :dataNasc , class: 'datepicker' %>
+
   </div>
   <div class="field">
     <%= f.label :Email %><br>
@@ -50,5 +51,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 	$('#rg').inputmask("99.999.999-9");
+  $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
 	});
 </script>

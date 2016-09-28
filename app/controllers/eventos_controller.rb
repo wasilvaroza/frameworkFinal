@@ -4,7 +4,33 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    @eventos = Evento.all
+    
+    # buscar o título
+    @ptitulo = params[:ptitulo]
+    # buscar o organizador
+    @porganizador = params[:porganizador]
+    # buscar o local
+    @plocal = params[:plocal]
+    
+    filtro = "1=1"
+    
+    #Caso o título não esteja em branco no form. _busca
+    if not(@ptitulo.nil?)
+       filtro = filtro + " and titulo like '%"+@ptitulo+"%'"
+    end
+    #Caso o organizador não esteja em branco no form. _busca
+
+    if not(@porganizador.nil?)
+       filtro = filtro + " and organizador like '%"+@porganizador+"%'"
+    end
+    
+    #Caso o local não esteja em branco no form. _busca
+    if not(@plocal.nil?)
+       filtro = filtro + " and local like '%"+@plocal+"%'"
+    end
+
+    #@atividades = Atividade.all
+    @eventos = Evento.where(filtro).order("titulo")
   end
 
   # GET /eventos/1

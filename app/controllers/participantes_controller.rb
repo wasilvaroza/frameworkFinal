@@ -4,7 +4,32 @@ class ParticipantesController < ApplicationController
   # GET /participantes
   # GET /participantes.json
   def index
-    @participantes = Participante.all
+
+    # buscar o título
+    @pnome = params[:pnome]
+    # buscar o RG
+    @prg = params[:prg]
+    # buscar o e-mail
+    @pemail = params[:pemail]
+    
+    filtro = "1=1"
+    
+    #Caso o nome não esteja em branco no form. _busca
+    if not(@pnome.nil?)
+       filtro = filtro + " and nome like '%"+@pnome+"%'"
+    end
+    #Caso o e-mail não esteja em branco no form. _busca
+    if not(@pemail.nil?)
+       filtro = filtro + " and email like '%"+@pemail+"%'"
+    end
+    #Caso o RG não esteja em branco no form. _busca
+    if not(@prg.nil?)
+       filtro = filtro + " and rg like '%"+@prg+"%'"
+    end
+    
+    #@participantes = Participante.all
+    @participantes = Participante.where(filtro).order("nome")
+
   end
 
   # GET /participantes/1

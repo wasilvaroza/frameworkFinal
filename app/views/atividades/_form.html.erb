@@ -16,7 +16,7 @@
     <%= f.select :evento_id, options_for_select(Evento.all.map{|m|[m.titulo,m.id]},f.object.evento_id) %>
 </div>
   <div class="field">
-    <%= f.label :tituloAtividade %><br>
+    <%= f.label :"Título" %><br>
     <%= f.text_field :tituloAtividade %>
   </div>
   <div class="field">
@@ -44,7 +44,7 @@
     <%= f.text_field :local %>
   </div>
   <div class="field">
-    <%= f.label :responsavel %><br>
+    <%= f.label :"Responsável" %><br>
     <%= f.text_field :responsavel %>
   </div>
   <div class="actions">

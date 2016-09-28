@@ -1,10 +1,10 @@
-<%= form_tag(atividades_path, method: "get") do %>
+<%= form_tag(eventos_path, method: "get") do %>
   <!-- <h4>Filtros:</h4>  -->
   <%= label_tag(:ptitulo, "Título:") %>
   <%= text_field_tag(:ptitulo,  @ptitulo) %>
     
-  <%= label_tag(:ptipo, "Tipo:") %>
-  <%= text_field_tag(:ptipo,  @ptipo) %>
+  <%= label_tag(:porganizador, "Organizador:") %>
+  <%= text_field_tag(:porganizador,  @porganizador) %>
   
   <%= label_tag(:plocal, "Local:") %>
   <%= text_field_tag(:plocal,  @plocal) %>

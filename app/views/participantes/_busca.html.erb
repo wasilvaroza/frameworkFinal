@@ -1,0 +1,13 @@
+<%= form_tag(participantes_path, method: "get") do %>
+  <!-- <h4>Filtros:</h4>  -->
+  <%= label_tag(:pnome, "Nome:") %>
+  <%= text_field_tag(:pnome,  @pnome) %>
+    
+  <%= label_tag(:prg, "RG:") %>
+  <%= text_field_tag(:prg,  @prg) %>
+  
+  <%= label_tag(:pemail, "E-mail:") %>
+  <%= text_field_tag(:pemail,  @pemail) %>
+  <br/>  
+  <%= submit_tag 'Filtrar' %>
+<% end %>
