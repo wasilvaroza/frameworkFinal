@@ -1,0 +1,13 @@
+<%= form_tag(atividades_path, method: "get") do %>
+  <!-- <h4>Filtros:</h4>  -->
+  <%= label_tag(:ptitulo, "Título:") %>
+  <%= text_field_tag(:ptitulo,  @ptitulo) %>
+    
+  <%= label_tag(:tipo, "Tipo:") %>
+  <%= text_field_tag(:ptipo,  @ptipo) %>
+  
+  <%= label_tag(:plocal, "Local:") %>
+  <%= text_field_tag(:plocal,  @plocal) %>
+  <br/>  
+  <%= submit_tag 'Filtrar' %>
+<% end %>

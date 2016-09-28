@@ -4,7 +4,31 @@ class AtividadesController < ApplicationController
   # GET /atividades
   # GET /atividades.json
   def index
-    @atividades = Atividade.all
+    # buscar o título
+    @ptitulo = params[:ptitulo]
+    # buscar o tipo
+    @ptipo = params[:ptipo]
+    # buscar o local
+    @plocal = params[:plocal]
+    
+    filtro = "1=1"
+    
+    #Caso o título não esteja em branco no form. _busca
+    if not(@ptitulo.nil?)
+       filtro = filtro + " and tituloAtividade like '%"+@ptitulo+"%'"
+    end
+    #Caso o tipo não esteja em branco no form. _busca
+    if not(@ptipo.nil?)
+       filtro = filtro + " and tipo like '%"+@ptipo+"%'"
+    end
+    #Caso o local não esteja em branco no form. _busca
+    if not(@plocal.nil?)
+       filtro = filtro + " and local like '%"+@plocal+"%'"
+    end
+
+    #@atividades = Atividade.all
+    @atividades = Atividade.where(filtro).order("tituloAtividade")
+
   end
 
   # GET /atividades/1
