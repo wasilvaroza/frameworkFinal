@@ -30,7 +30,7 @@ class EventosController < ApplicationController
     end
 
     #@atividades = Atividade.all
-    @eventos = Evento.where(filtro).order("titulo")
+    @eventos = Evento.where(filtro).order("titulo").paginate(page: params[:page], per_page: 3)
   end
 
   # GET /eventos/1

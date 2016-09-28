@@ -34,7 +34,8 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @eventos, previous_label: "Anterior", next_label: "Próxima" %>
+<br/>
 
-<br>
 
 <%= link_to 'Novo Evento', new_evento_path %>

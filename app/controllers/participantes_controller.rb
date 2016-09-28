@@ -28,7 +28,7 @@ class ParticipantesController < ApplicationController
     end
     
     #@participantes = Participante.all
-    @participantes = Participante.where(filtro).order("nome")
+    @participantes = Participante.where(filtro).order("nome").paginate(page: params[:page], per_page: 3)
 
   end
 

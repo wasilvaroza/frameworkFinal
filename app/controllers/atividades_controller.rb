@@ -27,7 +27,7 @@ class AtividadesController < ApplicationController
     end
 
     #@atividades = Atividade.all
-    @atividades = Atividade.where(filtro).order("tituloAtividade")
+    @atividades = Atividade.where(filtro).order("tituloAtividade").paginate(page: params[:page], per_page: 3)
 
   end
 
