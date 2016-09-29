@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :usuarios
+
   get 'paginas/index'
 
   get 'paginas/localizacao'
