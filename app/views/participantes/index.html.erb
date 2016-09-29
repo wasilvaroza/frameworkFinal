@@ -2,7 +2,7 @@
 
 <h1>Participantes Cadastrados</h1>
 <hr>
-    <%= render 'busca' %>
+<%= render 'busca' %>
 <hr>
 <table>
   <thead>
@@ -18,16 +18,16 @@
 
   <tbody>
     <% @participantes.each do |participante| %>
-      <tr>
-        <td><%= participante.nome %></td>
-        <td><%= participante.rg %></td>
-        <td><%= participante.dataNasc %></td>
-        <td><%= participante.email %></td>
-        <td><%= participante.formacao %></td>
-        <td> <%= link_to ' ', edit_participante_path(participante), class: "glyphicon glyphicon-pencil" %>
-<%= link_to ' ', participante, method: :delete, data: { confirm: 'Tem certeza de que deseja excluir?' } , class: "glyphicon glyphicon-trash" %>
-	</td>
-      </tr>
+    <tr>
+      <td><%= participante.nome %></td>
+      <td><%= participante.rg %></td>
+      <td><%= participante.dataNasc %></td>
+      <td><%= participante.email %></td>
+      <td><%= participante.formacao %></td>
+      <td> <%= link_to ' ', edit_participante_path(participante), class: "glyphicon glyphicon-pencil" %>
+        <%= link_to ' ', participante, method: :delete, data: { confirm: 'Tem certeza de que deseja excluir?' } , class: "glyphicon glyphicon-trash" %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
@@ -36,4 +36,6 @@
 
 <br>
 
-<%= link_to 'Novo Participante', new_participante_path %>
+<%= link_to 'Novo Participante', new_participante_path, :class => 'btn btn-primary' %>
+
+<%= link_to "Relatorio", listar_participantes_path(@participante, :format => 'pdf'), target: '_blank', class: "btn btn-primary" %>

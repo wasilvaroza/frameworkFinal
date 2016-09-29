@@ -38,4 +38,6 @@
 <br/>
 
 
-<%= link_to 'Novo Evento', new_evento_path %>
+<%= link_to 'Novo Evento', new_evento_path, :class => 'btn btn-primary' %>
+
+<%= link_to "Relatorio", listar_eventos_path(@evento, :format => 'pdf'), target: '_blank', :class => "btn btn-primary" %>

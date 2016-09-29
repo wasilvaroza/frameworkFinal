@@ -4,7 +4,7 @@ class EventosController < ApplicationController
   # GET /eventos
   # GET /eventos.json
   def index
-    
+
     # buscar o título
     @ptitulo = params[:ptitulo]
     # buscar o organizador
@@ -16,18 +16,18 @@ class EventosController < ApplicationController
     
     #Caso o título não esteja em branco no form. _busca
     if not(@ptitulo.nil?)
-       filtro = filtro + " and titulo like '%"+@ptitulo+"%'"
-    end
+     filtro = filtro + " and titulo like '%"+@ptitulo+"%'"
+   end
     #Caso o organizador não esteja em branco no form. _busca
 
     if not(@porganizador.nil?)
-       filtro = filtro + " and organizador like '%"+@porganizador+"%'"
-    end
-    
+     filtro = filtro + " and organizador like '%"+@porganizador+"%'"
+   end
+
     #Caso o local não esteja em branco no form. _busca
     if not(@plocal.nil?)
-       filtro = filtro + " and local like '%"+@plocal+"%'"
-    end
+     filtro = filtro + " and local like '%"+@plocal+"%'"
+   end
 
     #@atividades = Atividade.all
     @eventos = Evento.where(filtro).order("titulo").paginate(page: params[:page], per_page: 3)
@@ -87,6 +87,17 @@ class EventosController < ApplicationController
     end
   end
 
+  def listar
+    @eventos = Evento.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = EventosReport.new(@eventos)
+        send_data pdf.render, filename: 'EventosListagem.pdf', :width => pdf.bounds.width, type: 'application/pdf', disposition: :inline, :page_size => "A4", :page_layout => :portrait
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_evento
@@ -97,4 +108,4 @@ class EventosController < ApplicationController
     def evento_params
       params.require(:evento).permit(:titulo, :organizador, :local, :dataHora_inicio, :dataHora_fim, :assunto)
     end
-end
+  end

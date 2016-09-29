@@ -4,13 +4,26 @@ Rails.application.routes.draw do
 
   get 'paginas/localizacao'
 
-  resources :participantes
+  resources :participantes do
+    collection do
+      get :listar
+    end
+  end
 
-  resources :atividades
+  resources :atividades do
+    collection do
+      get :listar
+    end
+  end
 
-  resources :eventos
+  resources :eventos do
+    collection do
+      get :listar
+    end
+  end
 
   root :to => 'paginas#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

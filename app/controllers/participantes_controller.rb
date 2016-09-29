@@ -16,17 +16,17 @@ class ParticipantesController < ApplicationController
     
     #Caso o nome não esteja em branco no form. _busca
     if not(@pnome.nil?)
-       filtro = filtro + " and nome like '%"+@pnome+"%'"
-    end
+     filtro = filtro + " and nome like '%"+@pnome+"%'"
+   end
     #Caso o e-mail não esteja em branco no form. _busca
     if not(@pemail.nil?)
-       filtro = filtro + " and email like '%"+@pemail+"%'"
-    end
+     filtro = filtro + " and email like '%"+@pemail+"%'"
+   end
     #Caso o RG não esteja em branco no form. _busca
     if not(@prg.nil?)
-       filtro = filtro + " and rg like '%"+@prg+"%'"
-    end
-    
+     filtro = filtro + " and rg like '%"+@prg+"%'"
+   end
+
     #@participantes = Participante.all
     @participantes = Participante.where(filtro).order("nome").paginate(page: params[:page], per_page: 3)
 
@@ -86,6 +86,17 @@ class ParticipantesController < ApplicationController
     end
   end
 
+  def listar
+    @participantes = Participante.all
+    respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = ParticipantesReport.new(@participantes)
+          send_data pdf.render, filename: 'ParticipantesListagem.pdf', :width => pdf.bounds.width, type: 'application/pdf', disposition: :inline, :page_size => "A4", :page_layout => :portrait
+        end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_participante
@@ -96,4 +107,4 @@ class ParticipantesController < ApplicationController
     def participante_params
       params.require(:participante).permit(:nome, :rg, :dataNasc, :email, :formacao, :foto, :tituloAtividade, :atividade_id, :atividade)
     end
-end
+  end

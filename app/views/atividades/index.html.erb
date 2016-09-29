@@ -45,4 +45,6 @@
 
 <br>
 
-<%= link_to 'Nova Atividade', new_atividade_path %>
+<%= link_to 'Nova Atividade', new_atividade_path, :class => 'btn btn-primary' %>
+
+<%= link_to "Relatorio", listar_atividades_path(@atividade, :format => 'pdf'), target: '_blank', :class => "btn btn-primary" %>

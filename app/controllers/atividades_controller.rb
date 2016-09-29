@@ -13,15 +13,15 @@ class AtividadesController < ApplicationController
 		filtro = "1=1"
 		#Caso o título não esteja em branco no form. _busca
 		if not(@ptitulo.nil?)
-			 filtro = filtro + " and tituloAtividade like '%"+@ptitulo+"%'"
+			filtro = filtro + " and tituloAtividade like '%"+@ptitulo+"%'"
 		end
 		#Caso o tipo não esteja em branco no form. _busca
 		if not(@ptipo.nil?)
-			 filtro = filtro + " and tipo like '%"+@ptipo+"%'"
+			filtro = filtro + " and tipo like '%"+@ptipo+"%'"
 		end
 		#Caso o local não esteja em branco no form. _busca
 		if not(@plocal.nil?)
-			 filtro = filtro + " and local like '%"+@plocal+"%'"
+			filtro = filtro + " and local like '%"+@plocal+"%'"
 		end
 
 		@atividades = Atividade.where(filtro).order("tituloAtividade").paginate(page: params[:page], per_page: 3)
@@ -82,6 +82,17 @@ class AtividadesController < ApplicationController
 		end
 	end
 
+	def listar
+		@atividades = Atividade.all
+		respond_to do |format|
+			format.html
+			format.pdf do
+				pdf = AtividadesReport.new(@atividades)
+				send_data pdf.render, filename: 'AtividadesListagem.pdf', :width => pdf.bounds.width, type: 'application/pdf', disposition: :inline, :page_size => "A4", :page_layout => :landscape
+			end
+		end
+	end
+
 	private
 		# Use callbacks to share common setup or constraints between actions.
 		def set_atividade
@@ -92,4 +103,4 @@ class AtividadesController < ApplicationController
 		def atividade_params
 			params.require(:atividade).permit(:evento_id, :tituloAtividade, :assunto, :resumo, :tipo, :dataHora_inicio, :dataHora_fim, :local, :evento, :responsavel)
 		end
-end
+	end
