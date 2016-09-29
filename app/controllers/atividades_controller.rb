@@ -88,7 +88,7 @@ class AtividadesController < ApplicationController
 			format.html
 			format.pdf do
 				pdf = AtividadesReport.new(@atividades)
-				send_data pdf.render, filename: 'AtividadesListagem.pdf', :width => pdf.bounds.width, type: 'application/pdf', disposition: :inline, :page_size => "A4", :page_layout => :landscape
+				send_data pdf.render, filename: 'AtividadesListagem.pdf', :width => pdf.bounds.width, type: 'application/pdf', disposition: :inline, :page_size => "A4", :page_layout => :portrait
 			end
 		end
 	end
