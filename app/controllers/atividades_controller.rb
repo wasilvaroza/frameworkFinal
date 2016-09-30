@@ -24,7 +24,7 @@ class AtividadesController < ApplicationController
 			filtro = filtro + " and local like '%"+@plocal+"%'"
 		end
 
-		@atividades = Atividade.where(filtro).order("tituloAtividade").paginate(page: params[:page], per_page: 3)
+		@atividades = Atividade.where(filtro).order("'tituloAtividade'").paginate(page: params[:page], per_page: 3)
 
 	end
 
