@@ -34,7 +34,7 @@
   </div>
   <div class="field">
     <%= f.label :Atividade %><br>
-    <%= f.select :atividade_id, options_for_select(Atividade.all.map{|m|[m.tituloAtividade,m.id]},f.object.atividade_id) %>
+    <%= f.select :atividade_id, options_for_select(Atividade.all.map{|m|[m.tituloatividade,m.id]},f.object.atividade_id) %>
   </div>
   <div>
     <%= f.label :Foto %>

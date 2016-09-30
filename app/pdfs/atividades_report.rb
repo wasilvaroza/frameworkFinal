@@ -22,7 +22,7 @@ class AtividadesReport < Prawn::Document
     def atividade_rows
         [['Atividade','Evento','Início','Fim']] +
         @atividades.map do |atividade|
-            [atividade.tituloAtividade,atividade.evento.titulo,atividade.dataHora_inicio,atividade.dataHora_fim]
+            [atividade.tituloatividade,atividade.evento.titulo,atividade.dataHora_inicio,atividade.dataHora_fim]
         end
     end
 end

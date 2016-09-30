@@ -105,6 +105,6 @@ class ParticipantesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participante_params
-      params.require(:participante).permit(:nome, :rg, :dataNasc, :email, :formacao, :foto, :tituloAtividade, :atividade_id, :atividade)
+      params.require(:participante).permit(:nome, :rg, :dataNasc, :email, :formacao, :foto, :tituloatividade, :atividade_id, :atividade)
     end
   end

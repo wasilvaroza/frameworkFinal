@@ -2,7 +2,7 @@ class CreateAtividades < ActiveRecord::Migration
   def change
     create_table :atividades do |t|
       t.references :evento, index: true
-      t.string :tituloAtividade
+      t.string :tituloatividade
       t.string :assunto
       t.string :resumo
       t.string :tipo

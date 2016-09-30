@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20160929023550) do
 
   create_table "atividades", force: :cascade do |t|
     t.integer  "evento_id"
-    t.string   "tituloAtividade"
+    t.string   "tituloatividade"
     t.string   "assunto"
     t.string   "resumo"
     t.string   "tipo"

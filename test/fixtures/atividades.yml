@@ -2,7 +2,7 @@
 
 one:
   evento_id: 
-  tituloAtividade: MyString
+  tituloatividade: MyString
   assunto: MyString
   resumo: MyString
   tipo: MyString
@@ -12,7 +12,7 @@ one:
 
 two:
   evento_id: 
-  tituloAtividade: MyString
+  tituloatividade: MyString
   assunto: MyString
   resumo: MyString
   tipo: MyString

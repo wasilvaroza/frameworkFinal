@@ -13,7 +13,7 @@ class AtividadesController < ApplicationController
 		filtro = "1=1"
 		#Caso o título não esteja em branco no form. _busca
 		if not(@ptitulo.nil?)
-			filtro = filtro + " and tituloAtividade like '%"+@ptitulo+"%'"
+			filtro = filtro + " and tituloatividade like '%"+@ptitulo+"%'"
 		end
 		#Caso o tipo não esteja em branco no form. _busca
 		if not(@ptipo.nil?)
@@ -24,7 +24,7 @@ class AtividadesController < ApplicationController
 			filtro = filtro + " and local like '%"+@plocal+"%'"
 		end
 
-		@atividades = Atividade.where(filtro).order("'tituloAtividade'").paginate(page: params[:page], per_page: 3)
+		@atividades = Atividade.where(filtro).order("tituloatividade").paginate(page: params[:page], per_page: 3)
 
 	end
 
@@ -101,6 +101,6 @@ class AtividadesController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def atividade_params
-			params.require(:atividade).permit(:evento_id, :tituloAtividade, :assunto, :resumo, :tipo, :dataHora_inicio, :dataHora_fim, :local, :evento, :responsavel)
+			params.require(:atividade).permit(:evento_id, :tituloatividade, :assunto, :resumo, :tipo, :dataHora_inicio, :dataHora_fim, :local, :evento, :responsavel)
 		end
 	end

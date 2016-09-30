@@ -18,7 +18,7 @@ class AtividadesControllerTest < ActionController::TestCase
 
   test "should create atividade" do
     assert_difference('Atividade.count') do
-      post :create, atividade: { assunto: @atividade.assunto, dataHora_fim: @atividade.dataHora_fim, dataHora_inicio: @atividade.dataHora_inicio, evento_id: @atividade.evento_id, local: @atividade.local, resumo: @atividade.resumo, tipo: @atividade.tipo, tituloAtividade: @atividade.tituloAtividade }
+      post :create, atividade: { assunto: @atividade.assunto, dataHora_fim: @atividade.dataHora_fim, dataHora_inicio: @atividade.dataHora_inicio, evento_id: @atividade.evento_id, local: @atividade.local, resumo: @atividade.resumo, tipo: @atividade.tipo, tituloatividade: @atividade.tituloatividade }
     end
 
     assert_redirected_to atividade_path(assigns(:atividade))
@@ -35,7 +35,7 @@ class AtividadesControllerTest < ActionController::TestCase
   end
 
   test "should update atividade" do
-    patch :update, id: @atividade, atividade: { assunto: @atividade.assunto, dataHora_fim: @atividade.dataHora_fim, dataHora_inicio: @atividade.dataHora_inicio, evento_id: @atividade.evento_id, local: @atividade.local, resumo: @atividade.resumo, tipo: @atividade.tipo, tituloAtividade: @atividade.tituloAtividade }
+    patch :update, id: @atividade, atividade: { assunto: @atividade.assunto, dataHora_fim: @atividade.dataHora_fim, dataHora_inicio: @atividade.dataHora_inicio, evento_id: @atividade.evento_id, local: @atividade.local, resumo: @atividade.resumo, tipo: @atividade.tipo, tituloatividade: @atividade.tituloatividade }
     assert_redirected_to atividade_path(assigns(:atividade))
   end
 
